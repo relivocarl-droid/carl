@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | My Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">WebDev Lab</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Welcome to My Engineering Showcase</h1>
+        <p>A simple multi-page project developed for our Web Development Laboratory Activity.</p>
+    </header>
+
+    <main class="content-area">
+        <!-- Interactive Project Filter Section -->
+        <section class="card interaction-section">
+            <h2>Interactive Project Showcase</h2>
+            <p>Click the filtering triggers below to dynamically sort development modules built during this laboratory term:</p>
+            
+            <!-- Filter Triggers -->
+            <div class="filter-buttons">
+                <button class="btn active" onclick="filterProjects('all')">Show All</button>
+                <button class="btn" onclick="filterProjects('frontend')">Front-End</button>
+                <button class="btn" onclick="filterProjects('backend')">Back-End</button>
+                <button class="btn" onclick="filterProjects('systems')">Systems Optimization</button>
+            </div>
+
+            <!-- Dynamic Project Grid -->
+            <div class="project-display-grid">
+                <div class="project-module frontend">
+                    <h4>E-Canteen Wireframes</h4>
+                    <span class="tag">Front-End</span>
+                    <p>Designed a clean user journey flowchart and visual UI layout architectures utilizing precise component shapes to map out a seamless canteen ordering layout.</p>
+                </div>
+
+                <div class="project-module backend">
+                    <h4>Clinica Bansil Backend Engine</h4>
+                    <span class="tag">Back-End</span>
+                    <p>Developed database schemas, structured secure registration routes, and verified relational data models using a Laravel and MySQL architecture.</p>
+                </div>
+
+                <div class="project-module systems">
+                    <h4>Driver Configuration Matrix</h4>
+                    <span class="tag">Systems Optimization</span>
+                    <p>Tracked computer hardware baselines, adjusted core system parameters, and managed graphics driver configurations to maximize compute efficiency.</p>
+                </div>
+
+                <div class="project-module frontend">
+                    <h4>Gift Shop Interface</h4>
+                    <span class="tag">Front-End</span>
+                    <p>Constructed high-fidelity front page layout designs, category landing grids, and checkout workflows for a digital storefront layout.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Web Development Lab. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript Interaction Logic -->
+    <script>
+        function filterProjects(category) {
+            // Get all project cards
+            const modules = document.querySelectorAll('.project-module');
+            
+            // Loop through each element
+            modules.forEach(module => {
+                if (category === 'all') {
+                    // Show everything
+                    module.style.display = 'block';
+                } else {
+                    // Show only matching elements, hide the rest
+                    if (module.classList.contains(category)) {
+                        module.style.display = 'block';
+                    } else {
+                        module.style.display = 'none';
+                    }
+                }
+            });
+
+            // Update active state class on clicked button
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
